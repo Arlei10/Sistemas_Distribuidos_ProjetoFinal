@@ -29,4 +29,3 @@ public class Credenciais implements Serializable {
         return senha;
     }
 }
-

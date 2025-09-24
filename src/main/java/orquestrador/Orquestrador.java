@@ -190,6 +190,16 @@ public class Orquestrador {
         InfoWorker workerRemovido = workersAtivos.remove(workerId);
         if (workerRemovido != null) {
             workerIdsOrdenados.remove(workerId);
+            
+            // *** CORREÇÃO DO BUG ***
+            // Se a lista de workers não estiver vazia, ajusta o índice para garantir que ele seja válido.
+            if (!workerIdsOrdenados.isEmpty()) {
+                proximoWorkerIndex = proximoWorkerIndex % workerIdsOrdenados.size();
+            } else {
+                proximoWorkerIndex = 0; // Se a lista ficar vazia, reseta para 0.
+            }
+            // *** FIM DA CORREÇÃO ***
+            
             try {
                 workerRemovido.getSocket().close(); // Fecha a conexão.
             } catch (IOException e) { /* Ignorar */ }

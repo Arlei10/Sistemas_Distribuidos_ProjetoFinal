@@ -35,7 +35,7 @@ public class Worker {
 
     public static void main(String[] args) {
         if (args.length < 2) {
-            System.out.println("Uso: java worker.Worker <ip_orquestrador> <porta_orquestrador>");
+            System.out.println("Uso: java main.java.worker.Worker <ip_orquestrador> <porta_orquestrador>");
             return;
         }
         String ip = args[0];

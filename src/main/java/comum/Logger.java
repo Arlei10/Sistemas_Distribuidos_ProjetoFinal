@@ -16,10 +16,12 @@ public class Logger {
      * @param role O componente que está gerando o log (ex: "Orquestrador", "Worker-123").
      * @param message A mensagem a ser registrada.
      */
-    public static void log(String role, String message) {
+    public static synchronized void log(String role, String message) {
         String timestamp = dtf.format(LocalDateTime.now());
         // Formata a saída para incluir timestamp, o papel (role) e a mensagem.
         System.out.printf("[%s] [%s] %s%n", timestamp, role.toUpperCase(), message);
+        // Garante que o log seja escrito imediatamente, sem esperar pelo buffer.
+        System.out.flush();
     }
 }
 

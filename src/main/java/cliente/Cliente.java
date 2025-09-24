@@ -27,7 +27,7 @@ public class Cliente {
 
     public static void main(String[] args) {
         if (args.length < 2) {
-            System.out.println("Uso: java cliente.Cliente <ip_orquestrador> <porta_orquestrador>");
+            System.out.println("Uso: java main.java.cliente.Cliente <ip_orquestrador> <porta_orquestrador>");
             return;
         }
         String ip = args[0];
