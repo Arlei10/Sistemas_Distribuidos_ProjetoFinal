@@ -46,7 +46,7 @@ Abra um terminal na pasta raiz do projeto (a pasta Sistemas_Distribuidos_Projeto
 Execute o seguinte comando para compilar todos os ficheiros .java. O -d . instrui o compilador a colocar os ficheiros .class na estrutura de pacotes correta a partir do diretório atual.
 
 ```java
-javac -encoding UTF-8 -d . src/main/java/**/*.java
+javac -encoding UTF-8 -d . src/main/java/cliente/*.java src/main/java/comum/*.java src/main/java/modelo/*.java src/main/java/orquestrador/*.java src/main/java/worker/*.java
 ```
 (Nota: O ** pode não funcionar em versões mais antigas do CMD. Recomenda-se o uso do PowerShell ou de um terminal Git Bash.)
 
@@ -55,22 +55,22 @@ Passo 2: Execução
 
 1. Iniciar o Orquestrador de Backup (Terminal 1)
 ```java
-java main.java.orquestrador.OrquestradorSecundario
+java main.java.orquestrador.OrquestradorSecundario > backup.log
 ```
 2. Iniciar o Orquestrador Principal (Terminal 2)
 ```java
-java main.java.orquestrador.Orquestrador
+java main.java.orquestrador.Orquestrador > principal.log
 ```
 3. Iniciar os Workers (Terminais 3, 4, ...)
 Abra um novo terminal para cada worker.
 
 # Iniciar o Worker 1
 ```java
-java main.java.worker.Worker localhost 5001
+java main.java.worker.Worker localhost 5001 > worker1.log
 ```
 # Iniciar o Worker 2 (em outro terminal)
 ```java
-java main.java.worker.Worker localhost 5001
+java main.java.worker.Worker localhost 5001 > worker2.log
 ```
 4. Iniciar o Cliente (Terminal 5)
 ```java
